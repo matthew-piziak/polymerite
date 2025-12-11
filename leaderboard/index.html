@@ -3,11 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Blocking -->
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    <meta name="googlebot-news" content="noindex, nofollow">
+
     <title>Polymerite - Polymer Property Prediction Leaderboard</title>
     <style>
         :root {
-            --primary-color: #2563eb;
-            --secondary-color: #7c3aed;
+            --primary-color: #1e40af;
+            --secondary-color: #f59e0b;
+            --accent-gold: #fbbf24;
             --success-color: #10b981;
             --warning-color: #f59e0b;
             --bg-color: #f9fafb;
@@ -300,7 +307,10 @@
 </head>
 <body>
     <header>
-        <h1>Polymerite</h1>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
+            <img src="assets/medal.svg" alt="Pour le Mérite Medal" style="width: 64px; height: 64px;">
+            <h1>Polymerite</h1>
+        </div>
         <p>AI Model Leaderboard for Polymer Property Prediction</p>
     </header>
 
@@ -353,12 +363,17 @@
                 Models are evaluated on standardized datasets and ranked by RMSE (Root Mean Squared Error) - lower is better.
             </p>
             <p style="color: var(--text-secondary); margin-bottom: 15px;">
-                <strong>Dataset:</strong> Models marked "Verified" are trained on the TgSS dataset (7,284 polymers with glass transition temperatures).
-                Other models are from the POINT2 benchmark paper.
+                <strong>Dataset:</strong> Models marked "VERIFIED" are trained on the TgSS dataset (7,284 polymers with glass transition temperatures).
+                Models marked with <sup>†</sup> are from the POINT2 benchmark paper<sup id="point2-ref"><a href="papers/point2.pdf" target="_blank" style="color: var(--primary-color);">[1]</a></sup>.
             </p>
-            <p style="color: var(--text-secondary);">
-                <strong>Contribute:</strong> Want to add your model to the leaderboard? Open an issue or pull request on
-                <a href="https://github.com/your-username/polymerite">GitHub</a>.
+            <p style="color: var(--text-secondary); margin-bottom: 15px;">
+                <strong>References:</strong><br>
+                <span style="font-size: 0.9em;">
+                    [1] Jiaxin Xu, Gang Liu, Ruilan Guo, Meng Jiang, Tengfei Luo.
+                    "POINT2: A Polymer Informatics Training and Testing Database."
+                    <em>arXiv:2503.23491</em>, 2025.
+                    <a href="papers/point2.pdf" target="_blank" style="color: var(--primary-color); text-decoration: none;">[PDF]</a>
+                </span>
             </p>
         </div>
     </div>
@@ -366,7 +381,7 @@
     <footer>
         <p>
             Built with ❤️ for the polymer informatics community |
-            <a href="https://github.com/your-username/polymerite">GitHub</a> |
+            <a href="https://github.com/matthew-piziak/polymerite">GitHub</a> |
             <a href="https://arxiv.org/abs/2503.23491">POINT2 Paper</a>
         </p>
         <p style="margin-top: 10px; font-size: 0.85em;">
@@ -390,15 +405,29 @@
                         tr.classList.add('highlight-row');
                     }
 
+                    // Build model name with badges and footnotes
+                    let modelNameHtml = model.model_name;
+
+                    // Add VERIFIED badge for our models
+                    if (model.model_name.includes('(Ours)')) {
+                        modelNameHtml += '<span class="badge badge-ours">VERIFIED</span>';
+                    }
+
+                    // Add footnote for POINT2 models
+                    const point2ModelIds = ['gnn', 'grea', 'qrf_morgan', 'qrf_maccs', 'qrf_rdkit',
+                                            'qrf_tt', 'qrf_ap', 'mlp_d_morgan', 'mlp_d_maccs',
+                                            'mlp_d_rdkit', 'mlp_d_tt', 'mlp_d_ap',
+                                            'gpt_4o_mini_0', 'gpt_4o_mini_5', 'gpt_4o_mini_10', 'gpt_4o_mini_20'];
+                    if (point2ModelIds.includes(model.model_id)) {
+                        modelNameHtml += '<sup><a href="#point2-ref" style="color: var(--primary-color); text-decoration: none;">†</a></sup>';
+                    }
+
                     // Rank
                     const rankClass = index === 0 ? 'rank-1' : index === 1 ? 'rank-2' : index === 2 ? 'rank-3' : 'rank-other';
                     tr.innerHTML = `
                         <td><span class="rank-badge ${rankClass}">${model.rank}</span></td>
                         <td>
-                            <div class="model-name">
-                                ${model.model_name}
-                                ${model.model_name.includes('(Ours)') ? '<span class="badge badge-ours">VERIFIED</span>' : ''}
-                            </div>
+                            <div class="model-name">${modelNameHtml}</div>
                             <div class="model-family">${model.model_family}</div>
                         </td>
                         <td><span class="metric-value ${index === 0 ? 'metric-best' : ''}">${model.rmse.toFixed(2)}</span></td>
