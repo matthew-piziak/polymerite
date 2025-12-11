@@ -1,0 +1,116 @@
+{
+  "model_id": "mlp_d_ap",
+  "model_name": "MLP-D-AP",
+  "model_family": "Unknown",
+  "representation": "D-AP",
+  "properties": {
+    "Tg": {
+      "rmse": 38.55,
+      "mae": null,
+      "r2": null,
+      "test_size": 1442,
+      "units": "\u00b0C"
+    },
+    "Tm": {
+      "rmse": 59.41,
+      "mae": null,
+      "r2": null,
+      "test_size": 735,
+      "units": "\u00b0C"
+    },
+    "TC": {
+      "rmse": 0.052,
+      "mae": null,
+      "r2": null,
+      "test_size": 316,
+      "units": "W/(m\u00b7K)"
+    },
+    "FFV": {
+      "rmse": 0.014,
+      "mae": null,
+      "r2": null,
+      "test_size": 1610,
+      "units": "dimensionless"
+    },
+    "density": {
+      "rmse": 0.111,
+      "mae": null,
+      "r2": null,
+      "test_size": 342,
+      "units": "g/cm\u00b3"
+    },
+    "P_O2": {
+      "rmse": 0.631,
+      "mae": null,
+      "r2": null,
+      "test_size": 161,
+      "units": "log\u2081\u2080(Barrer)"
+    },
+    "P_N2": {
+      "rmse": 0.524,
+      "mae": null,
+      "r2": null,
+      "test_size": 159,
+      "units": "log\u2081\u2080(Barrer)"
+    },
+    "P_H2": {
+      "rmse": 0.437,
+      "mae": null,
+      "r2": null,
+      "test_size": 102,
+      "units": "log\u2081\u2080(Barrer)"
+    },
+    "P_CH4": {
+      "rmse": 0.633,
+      "mae": null,
+      "r2": null,
+      "test_size": 137,
+      "units": "log\u2081\u2080(Barrer)"
+    },
+    "P_CO2": {
+      "rmse": 0.628,
+      "mae": null,
+      "r2": null,
+      "test_size": 151,
+      "units": "log\u2081\u2080(Barrer)"
+    }
+  },
+  "paper": {
+    "title": "POINT2: A Polymer Informatics Training and Testing Database",
+    "authors": "Jiaxin Xu, Gang Liu, Ruilan Guo, Meng Jiang, Tengfei Luo",
+    "year": 2025,
+    "arxiv": "2503.23491",
+    "doi": null,
+    "url": "https://arxiv.org/abs/2503.23491"
+  },
+  "code": {
+    "repository": "https://github.com/Jiaxin-Xu/POINT2.git",
+    "framework": "Unknown",
+    "license": null
+  },
+  "training_details": {
+    "dataset": "POINT2",
+    "train_sizes": {
+      "Tg": 5766,
+      "Tm": 2936,
+      "TC": 1264,
+      "FFV": 6436,
+      "density": 1368,
+      "P_O2": 644,
+      "P_N2": 635,
+      "P_H2": 407,
+      "P_CH4": 544,
+      "P_CO2": 603
+    },
+    "hyperparameters": {},
+    "training_time": null,
+    "inference_time": null,
+    "hardware": null
+  },
+  "metadata": {
+    "submitted_by": "Automated extraction from POINT2 paper",
+    "submission_date": "2025-12-10",
+    "verified": true,
+    "notes": "Extracted from Table 2 of POINT2 paper"
+  }
+}

@@ -1,0 +1,1902 @@
+[
+  {
+    "model_id": "qrf_morgan",
+    "model_name": "QRF-Morgan",
+    "model_family": "Quantile Random Forest",
+    "representation": "Morgan Fingerprint (radius=2, 2048 bits)",
+    "properties": {
+      "Tg": {
+        "rmse": 38.07,
+        "mae": null,
+        "r2": null,
+        "test_size": 1442,
+        "units": "\u00b0C"
+      },
+      "Tm": {
+        "rmse": 59.79,
+        "mae": null,
+        "r2": null,
+        "test_size": 735,
+        "units": "\u00b0C"
+      },
+      "TC": {
+        "rmse": 0.056,
+        "mae": null,
+        "r2": null,
+        "test_size": 316,
+        "units": "W/(m\u00b7K)"
+      },
+      "FFV": {
+        "rmse": 0.016,
+        "mae": null,
+        "r2": null,
+        "test_size": 1610,
+        "units": "dimensionless"
+      },
+      "density": {
+        "rmse": 0.107,
+        "mae": null,
+        "r2": null,
+        "test_size": 342,
+        "units": "g/cm\u00b3"
+      },
+      "P_O2": {
+        "rmse": 0.698,
+        "mae": null,
+        "r2": null,
+        "test_size": 161,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_N2": {
+        "rmse": 0.577,
+        "mae": null,
+        "r2": null,
+        "test_size": 159,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_H2": {
+        "rmse": 0.436,
+        "mae": null,
+        "r2": null,
+        "test_size": 102,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CH4": {
+        "rmse": 0.606,
+        "mae": null,
+        "r2": null,
+        "test_size": 137,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CO2": {
+        "rmse": 0.69,
+        "mae": null,
+        "r2": null,
+        "test_size": 151,
+        "units": "log\u2081\u2080(Barrer)"
+      }
+    },
+    "paper": {
+      "title": "POINT2: A Polymer Informatics Training and Testing Database",
+      "authors": "Jiaxin Xu, Gang Liu, Ruilan Guo, Meng Jiang, Tengfei Luo",
+      "year": 2025,
+      "arxiv": "2503.23491",
+      "doi": null,
+      "url": "https://arxiv.org/abs/2503.23491"
+    },
+    "code": {
+      "repository": "https://github.com/Jiaxin-Xu/POINT2.git",
+      "framework": "quantile-forest (Python)",
+      "license": null
+    },
+    "training_details": {
+      "dataset": "POINT2",
+      "train_sizes": {
+        "Tg": 5766,
+        "Tm": 2936,
+        "TC": 1264,
+        "FFV": 6436,
+        "density": 1368,
+        "P_O2": 644,
+        "P_N2": 635,
+        "P_H2": 407,
+        "P_CH4": 544,
+        "P_CO2": 603
+      },
+      "hyperparameters": {
+        "n_estimators": 100
+      },
+      "training_time": null,
+      "inference_time": null,
+      "hardware": null
+    },
+    "metadata": {
+      "submitted_by": "Automated extraction from POINT2 paper",
+      "submission_date": "2025-12-10",
+      "verified": true,
+      "notes": "Extracted from Table 2 of POINT2 paper"
+    }
+  },
+  {
+    "model_id": "qrf_maccs",
+    "model_name": "QRF-MACCS",
+    "model_family": "Quantile Random Forest",
+    "representation": "MACCS Keys (166 bits)",
+    "properties": {
+      "Tg": {
+        "rmse": 43.53,
+        "mae": null,
+        "r2": null,
+        "test_size": 1442,
+        "units": "\u00b0C"
+      },
+      "Tm": {
+        "rmse": 61.15,
+        "mae": null,
+        "r2": null,
+        "test_size": 735,
+        "units": "\u00b0C"
+      },
+      "TC": {
+        "rmse": 0.055,
+        "mae": null,
+        "r2": null,
+        "test_size": 316,
+        "units": "W/(m\u00b7K)"
+      },
+      "FFV": {
+        "rmse": 0.016,
+        "mae": null,
+        "r2": null,
+        "test_size": 1610,
+        "units": "dimensionless"
+      },
+      "density": {
+        "rmse": 0.101,
+        "mae": null,
+        "r2": null,
+        "test_size": 342,
+        "units": "g/cm\u00b3"
+      },
+      "P_O2": {
+        "rmse": 0.76,
+        "mae": null,
+        "r2": null,
+        "test_size": 161,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_N2": {
+        "rmse": 0.627,
+        "mae": null,
+        "r2": null,
+        "test_size": 159,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_H2": {
+        "rmse": 0.429,
+        "mae": null,
+        "r2": null,
+        "test_size": 102,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CH4": {
+        "rmse": 0.809,
+        "mae": null,
+        "r2": null,
+        "test_size": 137,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CO2": {
+        "rmse": 0.723,
+        "mae": null,
+        "r2": null,
+        "test_size": 151,
+        "units": "log\u2081\u2080(Barrer)"
+      }
+    },
+    "paper": {
+      "title": "POINT2: A Polymer Informatics Training and Testing Database",
+      "authors": "Jiaxin Xu, Gang Liu, Ruilan Guo, Meng Jiang, Tengfei Luo",
+      "year": 2025,
+      "arxiv": "2503.23491",
+      "doi": null,
+      "url": "https://arxiv.org/abs/2503.23491"
+    },
+    "code": {
+      "repository": "https://github.com/Jiaxin-Xu/POINT2.git",
+      "framework": "quantile-forest (Python)",
+      "license": null
+    },
+    "training_details": {
+      "dataset": "POINT2",
+      "train_sizes": {
+        "Tg": 5766,
+        "Tm": 2936,
+        "TC": 1264,
+        "FFV": 6436,
+        "density": 1368,
+        "P_O2": 644,
+        "P_N2": 635,
+        "P_H2": 407,
+        "P_CH4": 544,
+        "P_CO2": 603
+      },
+      "hyperparameters": {
+        "n_estimators": 100
+      },
+      "training_time": null,
+      "inference_time": null,
+      "hardware": null
+    },
+    "metadata": {
+      "submitted_by": "Automated extraction from POINT2 paper",
+      "submission_date": "2025-12-10",
+      "verified": true,
+      "notes": "Extracted from Table 2 of POINT2 paper"
+    }
+  },
+  {
+    "model_id": "qrf_rdkit",
+    "model_name": "QRF-RDKit",
+    "model_family": "Quantile Random Forest",
+    "representation": "RDKit Fingerprint (2048 bits)",
+    "properties": {
+      "Tg": {
+        "rmse": 39.23,
+        "mae": null,
+        "r2": null,
+        "test_size": 1442,
+        "units": "\u00b0C"
+      },
+      "Tm": {
+        "rmse": 60.13,
+        "mae": null,
+        "r2": null,
+        "test_size": 735,
+        "units": "\u00b0C"
+      },
+      "TC": {
+        "rmse": 0.056,
+        "mae": null,
+        "r2": null,
+        "test_size": 316,
+        "units": "W/(m\u00b7K)"
+      },
+      "FFV": {
+        "rmse": 0.016,
+        "mae": null,
+        "r2": null,
+        "test_size": 1610,
+        "units": "dimensionless"
+      },
+      "density": {
+        "rmse": 0.118,
+        "mae": null,
+        "r2": null,
+        "test_size": 342,
+        "units": "g/cm\u00b3"
+      },
+      "P_O2": {
+        "rmse": 0.716,
+        "mae": null,
+        "r2": null,
+        "test_size": 161,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_N2": {
+        "rmse": 0.533,
+        "mae": null,
+        "r2": null,
+        "test_size": 159,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_H2": {
+        "rmse": 0.509,
+        "mae": null,
+        "r2": null,
+        "test_size": 102,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CH4": {
+        "rmse": 0.593,
+        "mae": null,
+        "r2": null,
+        "test_size": 137,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CO2": {
+        "rmse": 0.814,
+        "mae": null,
+        "r2": null,
+        "test_size": 151,
+        "units": "log\u2081\u2080(Barrer)"
+      }
+    },
+    "paper": {
+      "title": "POINT2: A Polymer Informatics Training and Testing Database",
+      "authors": "Jiaxin Xu, Gang Liu, Ruilan Guo, Meng Jiang, Tengfei Luo",
+      "year": 2025,
+      "arxiv": "2503.23491",
+      "doi": null,
+      "url": "https://arxiv.org/abs/2503.23491"
+    },
+    "code": {
+      "repository": "https://github.com/Jiaxin-Xu/POINT2.git",
+      "framework": "quantile-forest (Python)",
+      "license": null
+    },
+    "training_details": {
+      "dataset": "POINT2",
+      "train_sizes": {
+        "Tg": 5766,
+        "Tm": 2936,
+        "TC": 1264,
+        "FFV": 6436,
+        "density": 1368,
+        "P_O2": 644,
+        "P_N2": 635,
+        "P_H2": 407,
+        "P_CH4": 544,
+        "P_CO2": 603
+      },
+      "hyperparameters": {
+        "n_estimators": 100
+      },
+      "training_time": null,
+      "inference_time": null,
+      "hardware": null
+    },
+    "metadata": {
+      "submitted_by": "Automated extraction from POINT2 paper",
+      "submission_date": "2025-12-10",
+      "verified": true,
+      "notes": "Extracted from Table 2 of POINT2 paper"
+    }
+  },
+  {
+    "model_id": "qrf_tt",
+    "model_name": "QRF-TT",
+    "model_family": "Quantile Random Forest",
+    "representation": "Topological Torsion Fingerprint (2048 bits)",
+    "properties": {
+      "Tg": {
+        "rmse": 39.27,
+        "mae": null,
+        "r2": null,
+        "test_size": 1442,
+        "units": "\u00b0C"
+      },
+      "Tm": {
+        "rmse": 62.48,
+        "mae": null,
+        "r2": null,
+        "test_size": 735,
+        "units": "\u00b0C"
+      },
+      "TC": {
+        "rmse": 0.051,
+        "mae": null,
+        "r2": null,
+        "test_size": 316,
+        "units": "W/(m\u00b7K)"
+      },
+      "FFV": {
+        "rmse": 0.017,
+        "mae": null,
+        "r2": null,
+        "test_size": 1610,
+        "units": "dimensionless"
+      },
+      "density": {
+        "rmse": 0.182,
+        "mae": null,
+        "r2": null,
+        "test_size": 342,
+        "units": "g/cm\u00b3"
+      },
+      "P_O2": {
+        "rmse": 0.805,
+        "mae": null,
+        "r2": null,
+        "test_size": 161,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_N2": {
+        "rmse": 0.526,
+        "mae": null,
+        "r2": null,
+        "test_size": 159,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_H2": {
+        "rmse": 0.517,
+        "mae": null,
+        "r2": null,
+        "test_size": 102,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CH4": {
+        "rmse": 0.55,
+        "mae": null,
+        "r2": null,
+        "test_size": 137,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CO2": {
+        "rmse": 0.875,
+        "mae": null,
+        "r2": null,
+        "test_size": 151,
+        "units": "log\u2081\u2080(Barrer)"
+      }
+    },
+    "paper": {
+      "title": "POINT2: A Polymer Informatics Training and Testing Database",
+      "authors": "Jiaxin Xu, Gang Liu, Ruilan Guo, Meng Jiang, Tengfei Luo",
+      "year": 2025,
+      "arxiv": "2503.23491",
+      "doi": null,
+      "url": "https://arxiv.org/abs/2503.23491"
+    },
+    "code": {
+      "repository": "https://github.com/Jiaxin-Xu/POINT2.git",
+      "framework": "quantile-forest (Python)",
+      "license": null
+    },
+    "training_details": {
+      "dataset": "POINT2",
+      "train_sizes": {
+        "Tg": 5766,
+        "Tm": 2936,
+        "TC": 1264,
+        "FFV": 6436,
+        "density": 1368,
+        "P_O2": 644,
+        "P_N2": 635,
+        "P_H2": 407,
+        "P_CH4": 544,
+        "P_CO2": 603
+      },
+      "hyperparameters": {
+        "n_estimators": 100
+      },
+      "training_time": null,
+      "inference_time": null,
+      "hardware": null
+    },
+    "metadata": {
+      "submitted_by": "Automated extraction from POINT2 paper",
+      "submission_date": "2025-12-10",
+      "verified": true,
+      "notes": "Extracted from Table 2 of POINT2 paper"
+    }
+  },
+  {
+    "model_id": "qrf_ap",
+    "model_name": "QRF-AP",
+    "model_family": "Quantile Random Forest",
+    "representation": "Atom Pair Fingerprint (2048 bits)",
+    "properties": {
+      "Tg": {
+        "rmse": 40.05,
+        "mae": null,
+        "r2": null,
+        "test_size": 1442,
+        "units": "\u00b0C"
+      },
+      "Tm": {
+        "rmse": 61.69,
+        "mae": null,
+        "r2": null,
+        "test_size": 735,
+        "units": "\u00b0C"
+      },
+      "TC": {
+        "rmse": 0.049,
+        "mae": null,
+        "r2": null,
+        "test_size": 316,
+        "units": "W/(m\u00b7K)"
+      },
+      "FFV": {
+        "rmse": 0.016,
+        "mae": null,
+        "r2": null,
+        "test_size": 1610,
+        "units": "dimensionless"
+      },
+      "density": {
+        "rmse": 0.12,
+        "mae": null,
+        "r2": null,
+        "test_size": 342,
+        "units": "g/cm\u00b3"
+      },
+      "P_O2": {
+        "rmse": 0.726,
+        "mae": null,
+        "r2": null,
+        "test_size": 161,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_N2": {
+        "rmse": 0.505,
+        "mae": null,
+        "r2": null,
+        "test_size": 159,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_H2": {
+        "rmse": 0.514,
+        "mae": null,
+        "r2": null,
+        "test_size": 102,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CH4": {
+        "rmse": 0.568,
+        "mae": null,
+        "r2": null,
+        "test_size": 137,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CO2": {
+        "rmse": 0.774,
+        "mae": null,
+        "r2": null,
+        "test_size": 151,
+        "units": "log\u2081\u2080(Barrer)"
+      }
+    },
+    "paper": {
+      "title": "POINT2: A Polymer Informatics Training and Testing Database",
+      "authors": "Jiaxin Xu, Gang Liu, Ruilan Guo, Meng Jiang, Tengfei Luo",
+      "year": 2025,
+      "arxiv": "2503.23491",
+      "doi": null,
+      "url": "https://arxiv.org/abs/2503.23491"
+    },
+    "code": {
+      "repository": "https://github.com/Jiaxin-Xu/POINT2.git",
+      "framework": "quantile-forest (Python)",
+      "license": null
+    },
+    "training_details": {
+      "dataset": "POINT2",
+      "train_sizes": {
+        "Tg": 5766,
+        "Tm": 2936,
+        "TC": 1264,
+        "FFV": 6436,
+        "density": 1368,
+        "P_O2": 644,
+        "P_N2": 635,
+        "P_H2": 407,
+        "P_CH4": 544,
+        "P_CO2": 603
+      },
+      "hyperparameters": {
+        "n_estimators": 100
+      },
+      "training_time": null,
+      "inference_time": null,
+      "hardware": null
+    },
+    "metadata": {
+      "submitted_by": "Automated extraction from POINT2 paper",
+      "submission_date": "2025-12-10",
+      "verified": true,
+      "notes": "Extracted from Table 2 of POINT2 paper"
+    }
+  },
+  {
+    "model_id": "mlp_d_morgan",
+    "model_name": "MLP-D-Morgan",
+    "model_family": "Unknown",
+    "representation": "D-Morgan",
+    "properties": {
+      "Tg": {
+        "rmse": 37.57,
+        "mae": null,
+        "r2": null,
+        "test_size": 1442,
+        "units": "\u00b0C"
+      },
+      "Tm": {
+        "rmse": 59.47,
+        "mae": null,
+        "r2": null,
+        "test_size": 735,
+        "units": "\u00b0C"
+      },
+      "TC": {
+        "rmse": 0.047,
+        "mae": null,
+        "r2": null,
+        "test_size": 316,
+        "units": "W/(m\u00b7K)"
+      },
+      "FFV": {
+        "rmse": 0.015,
+        "mae": null,
+        "r2": null,
+        "test_size": 1610,
+        "units": "dimensionless"
+      },
+      "density": {
+        "rmse": 0.117,
+        "mae": null,
+        "r2": null,
+        "test_size": 342,
+        "units": "g/cm\u00b3"
+      },
+      "P_O2": {
+        "rmse": 0.64,
+        "mae": null,
+        "r2": null,
+        "test_size": 161,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_N2": {
+        "rmse": 0.49,
+        "mae": null,
+        "r2": null,
+        "test_size": 159,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_H2": {
+        "rmse": 0.478,
+        "mae": null,
+        "r2": null,
+        "test_size": 102,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CH4": {
+        "rmse": 0.59,
+        "mae": null,
+        "r2": null,
+        "test_size": 137,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CO2": {
+        "rmse": 0.646,
+        "mae": null,
+        "r2": null,
+        "test_size": 151,
+        "units": "log\u2081\u2080(Barrer)"
+      }
+    },
+    "paper": {
+      "title": "POINT2: A Polymer Informatics Training and Testing Database",
+      "authors": "Jiaxin Xu, Gang Liu, Ruilan Guo, Meng Jiang, Tengfei Luo",
+      "year": 2025,
+      "arxiv": "2503.23491",
+      "doi": null,
+      "url": "https://arxiv.org/abs/2503.23491"
+    },
+    "code": {
+      "repository": "https://github.com/Jiaxin-Xu/POINT2.git",
+      "framework": "Unknown",
+      "license": null
+    },
+    "training_details": {
+      "dataset": "POINT2",
+      "train_sizes": {
+        "Tg": 5766,
+        "Tm": 2936,
+        "TC": 1264,
+        "FFV": 6436,
+        "density": 1368,
+        "P_O2": 644,
+        "P_N2": 635,
+        "P_H2": 407,
+        "P_CH4": 544,
+        "P_CO2": 603
+      },
+      "hyperparameters": {},
+      "training_time": null,
+      "inference_time": null,
+      "hardware": null
+    },
+    "metadata": {
+      "submitted_by": "Automated extraction from POINT2 paper",
+      "submission_date": "2025-12-10",
+      "verified": true,
+      "notes": "Extracted from Table 2 of POINT2 paper"
+    }
+  },
+  {
+    "model_id": "mlp_d_maccs",
+    "model_name": "MLP-D-MACCS",
+    "model_family": "Unknown",
+    "representation": "D-MACCS",
+    "properties": {
+      "Tg": {
+        "rmse": 40.42,
+        "mae": null,
+        "r2": null,
+        "test_size": 1442,
+        "units": "\u00b0C"
+      },
+      "Tm": {
+        "rmse": 61.06,
+        "mae": null,
+        "r2": null,
+        "test_size": 735,
+        "units": "\u00b0C"
+      },
+      "TC": {
+        "rmse": 0.059,
+        "mae": null,
+        "r2": null,
+        "test_size": 316,
+        "units": "W/(m\u00b7K)"
+      },
+      "FFV": {
+        "rmse": 0.013,
+        "mae": null,
+        "r2": null,
+        "test_size": 1610,
+        "units": "dimensionless"
+      },
+      "density": {
+        "rmse": 0.104,
+        "mae": null,
+        "r2": null,
+        "test_size": 342,
+        "units": "g/cm\u00b3"
+      },
+      "P_O2": {
+        "rmse": 0.695,
+        "mae": null,
+        "r2": null,
+        "test_size": 161,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_N2": {
+        "rmse": 0.601,
+        "mae": null,
+        "r2": null,
+        "test_size": 159,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_H2": {
+        "rmse": 0.371,
+        "mae": null,
+        "r2": null,
+        "test_size": 102,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CH4": {
+        "rmse": 0.702,
+        "mae": null,
+        "r2": null,
+        "test_size": 137,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CO2": {
+        "rmse": 0.704,
+        "mae": null,
+        "r2": null,
+        "test_size": 151,
+        "units": "log\u2081\u2080(Barrer)"
+      }
+    },
+    "paper": {
+      "title": "POINT2: A Polymer Informatics Training and Testing Database",
+      "authors": "Jiaxin Xu, Gang Liu, Ruilan Guo, Meng Jiang, Tengfei Luo",
+      "year": 2025,
+      "arxiv": "2503.23491",
+      "doi": null,
+      "url": "https://arxiv.org/abs/2503.23491"
+    },
+    "code": {
+      "repository": "https://github.com/Jiaxin-Xu/POINT2.git",
+      "framework": "Unknown",
+      "license": null
+    },
+    "training_details": {
+      "dataset": "POINT2",
+      "train_sizes": {
+        "Tg": 5766,
+        "Tm": 2936,
+        "TC": 1264,
+        "FFV": 6436,
+        "density": 1368,
+        "P_O2": 644,
+        "P_N2": 635,
+        "P_H2": 407,
+        "P_CH4": 544,
+        "P_CO2": 603
+      },
+      "hyperparameters": {},
+      "training_time": null,
+      "inference_time": null,
+      "hardware": null
+    },
+    "metadata": {
+      "submitted_by": "Automated extraction from POINT2 paper",
+      "submission_date": "2025-12-10",
+      "verified": true,
+      "notes": "Extracted from Table 2 of POINT2 paper"
+    }
+  },
+  {
+    "model_id": "mlp_d_rdkit",
+    "model_name": "MLP-D-RDKit",
+    "model_family": "Unknown",
+    "representation": "D-RDKit",
+    "properties": {
+      "Tg": {
+        "rmse": 38.18,
+        "mae": null,
+        "r2": null,
+        "test_size": 1442,
+        "units": "\u00b0C"
+      },
+      "Tm": {
+        "rmse": 58.87,
+        "mae": null,
+        "r2": null,
+        "test_size": 735,
+        "units": "\u00b0C"
+      },
+      "TC": {
+        "rmse": 0.057,
+        "mae": null,
+        "r2": null,
+        "test_size": 316,
+        "units": "W/(m\u00b7K)"
+      },
+      "FFV": {
+        "rmse": 0.014,
+        "mae": null,
+        "r2": null,
+        "test_size": 1610,
+        "units": "dimensionless"
+      },
+      "density": {
+        "rmse": 0.126,
+        "mae": null,
+        "r2": null,
+        "test_size": 342,
+        "units": "g/cm\u00b3"
+      },
+      "P_O2": {
+        "rmse": 0.739,
+        "mae": null,
+        "r2": null,
+        "test_size": 161,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_N2": {
+        "rmse": 0.545,
+        "mae": null,
+        "r2": null,
+        "test_size": 159,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_H2": {
+        "rmse": 0.469,
+        "mae": null,
+        "r2": null,
+        "test_size": 102,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CH4": {
+        "rmse": 0.606,
+        "mae": null,
+        "r2": null,
+        "test_size": 137,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CO2": {
+        "rmse": 0.742,
+        "mae": null,
+        "r2": null,
+        "test_size": 151,
+        "units": "log\u2081\u2080(Barrer)"
+      }
+    },
+    "paper": {
+      "title": "POINT2: A Polymer Informatics Training and Testing Database",
+      "authors": "Jiaxin Xu, Gang Liu, Ruilan Guo, Meng Jiang, Tengfei Luo",
+      "year": 2025,
+      "arxiv": "2503.23491",
+      "doi": null,
+      "url": "https://arxiv.org/abs/2503.23491"
+    },
+    "code": {
+      "repository": "https://github.com/Jiaxin-Xu/POINT2.git",
+      "framework": "Unknown",
+      "license": null
+    },
+    "training_details": {
+      "dataset": "POINT2",
+      "train_sizes": {
+        "Tg": 5766,
+        "Tm": 2936,
+        "TC": 1264,
+        "FFV": 6436,
+        "density": 1368,
+        "P_O2": 644,
+        "P_N2": 635,
+        "P_H2": 407,
+        "P_CH4": 544,
+        "P_CO2": 603
+      },
+      "hyperparameters": {},
+      "training_time": null,
+      "inference_time": null,
+      "hardware": null
+    },
+    "metadata": {
+      "submitted_by": "Automated extraction from POINT2 paper",
+      "submission_date": "2025-12-10",
+      "verified": true,
+      "notes": "Extracted from Table 2 of POINT2 paper"
+    }
+  },
+  {
+    "model_id": "mlp_d_tt",
+    "model_name": "MLP-D-TT",
+    "model_family": "Unknown",
+    "representation": "D-TT",
+    "properties": {
+      "Tg": {
+        "rmse": 39.37,
+        "mae": null,
+        "r2": null,
+        "test_size": 1442,
+        "units": "\u00b0C"
+      },
+      "Tm": {
+        "rmse": 63.16,
+        "mae": null,
+        "r2": null,
+        "test_size": 735,
+        "units": "\u00b0C"
+      },
+      "TC": {
+        "rmse": 0.047,
+        "mae": null,
+        "r2": null,
+        "test_size": 316,
+        "units": "W/(m\u00b7K)"
+      },
+      "FFV": {
+        "rmse": 0.016,
+        "mae": null,
+        "r2": null,
+        "test_size": 1610,
+        "units": "dimensionless"
+      },
+      "density": {
+        "rmse": 0.126,
+        "mae": null,
+        "r2": null,
+        "test_size": 342,
+        "units": "g/cm\u00b3"
+      },
+      "P_O2": {
+        "rmse": 0.689,
+        "mae": null,
+        "r2": null,
+        "test_size": 161,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_N2": {
+        "rmse": 0.534,
+        "mae": null,
+        "r2": null,
+        "test_size": 159,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_H2": {
+        "rmse": 0.486,
+        "mae": null,
+        "r2": null,
+        "test_size": 102,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CH4": {
+        "rmse": 0.595,
+        "mae": null,
+        "r2": null,
+        "test_size": 137,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CO2": {
+        "rmse": 0.728,
+        "mae": null,
+        "r2": null,
+        "test_size": 151,
+        "units": "log\u2081\u2080(Barrer)"
+      }
+    },
+    "paper": {
+      "title": "POINT2: A Polymer Informatics Training and Testing Database",
+      "authors": "Jiaxin Xu, Gang Liu, Ruilan Guo, Meng Jiang, Tengfei Luo",
+      "year": 2025,
+      "arxiv": "2503.23491",
+      "doi": null,
+      "url": "https://arxiv.org/abs/2503.23491"
+    },
+    "code": {
+      "repository": "https://github.com/Jiaxin-Xu/POINT2.git",
+      "framework": "Unknown",
+      "license": null
+    },
+    "training_details": {
+      "dataset": "POINT2",
+      "train_sizes": {
+        "Tg": 5766,
+        "Tm": 2936,
+        "TC": 1264,
+        "FFV": 6436,
+        "density": 1368,
+        "P_O2": 644,
+        "P_N2": 635,
+        "P_H2": 407,
+        "P_CH4": 544,
+        "P_CO2": 603
+      },
+      "hyperparameters": {},
+      "training_time": null,
+      "inference_time": null,
+      "hardware": null
+    },
+    "metadata": {
+      "submitted_by": "Automated extraction from POINT2 paper",
+      "submission_date": "2025-12-10",
+      "verified": true,
+      "notes": "Extracted from Table 2 of POINT2 paper"
+    }
+  },
+  {
+    "model_id": "mlp_d_ap",
+    "model_name": "MLP-D-AP",
+    "model_family": "Unknown",
+    "representation": "D-AP",
+    "properties": {
+      "Tg": {
+        "rmse": 38.55,
+        "mae": null,
+        "r2": null,
+        "test_size": 1442,
+        "units": "\u00b0C"
+      },
+      "Tm": {
+        "rmse": 59.41,
+        "mae": null,
+        "r2": null,
+        "test_size": 735,
+        "units": "\u00b0C"
+      },
+      "TC": {
+        "rmse": 0.052,
+        "mae": null,
+        "r2": null,
+        "test_size": 316,
+        "units": "W/(m\u00b7K)"
+      },
+      "FFV": {
+        "rmse": 0.014,
+        "mae": null,
+        "r2": null,
+        "test_size": 1610,
+        "units": "dimensionless"
+      },
+      "density": {
+        "rmse": 0.111,
+        "mae": null,
+        "r2": null,
+        "test_size": 342,
+        "units": "g/cm\u00b3"
+      },
+      "P_O2": {
+        "rmse": 0.631,
+        "mae": null,
+        "r2": null,
+        "test_size": 161,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_N2": {
+        "rmse": 0.524,
+        "mae": null,
+        "r2": null,
+        "test_size": 159,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_H2": {
+        "rmse": 0.437,
+        "mae": null,
+        "r2": null,
+        "test_size": 102,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CH4": {
+        "rmse": 0.633,
+        "mae": null,
+        "r2": null,
+        "test_size": 137,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CO2": {
+        "rmse": 0.628,
+        "mae": null,
+        "r2": null,
+        "test_size": 151,
+        "units": "log\u2081\u2080(Barrer)"
+      }
+    },
+    "paper": {
+      "title": "POINT2: A Polymer Informatics Training and Testing Database",
+      "authors": "Jiaxin Xu, Gang Liu, Ruilan Guo, Meng Jiang, Tengfei Luo",
+      "year": 2025,
+      "arxiv": "2503.23491",
+      "doi": null,
+      "url": "https://arxiv.org/abs/2503.23491"
+    },
+    "code": {
+      "repository": "https://github.com/Jiaxin-Xu/POINT2.git",
+      "framework": "Unknown",
+      "license": null
+    },
+    "training_details": {
+      "dataset": "POINT2",
+      "train_sizes": {
+        "Tg": 5766,
+        "Tm": 2936,
+        "TC": 1264,
+        "FFV": 6436,
+        "density": 1368,
+        "P_O2": 644,
+        "P_N2": 635,
+        "P_H2": 407,
+        "P_CH4": 544,
+        "P_CO2": 603
+      },
+      "hyperparameters": {},
+      "training_time": null,
+      "inference_time": null,
+      "hardware": null
+    },
+    "metadata": {
+      "submitted_by": "Automated extraction from POINT2 paper",
+      "submission_date": "2025-12-10",
+      "verified": true,
+      "notes": "Extracted from Table 2 of POINT2 paper"
+    }
+  },
+  {
+    "model_id": "gnn",
+    "model_name": "GNN",
+    "model_family": "Graph Neural Network (GIN/GCN)",
+    "representation": "Graph-based representation (nodes: atoms, edges: bonds)",
+    "properties": {
+      "Tg": {
+        "rmse": 36.01,
+        "mae": null,
+        "r2": null,
+        "test_size": 1442,
+        "units": "\u00b0C"
+      },
+      "Tm": {
+        "rmse": 55.47,
+        "mae": null,
+        "r2": null,
+        "test_size": 735,
+        "units": "\u00b0C"
+      },
+      "TC": {
+        "rmse": 0.077,
+        "mae": null,
+        "r2": null,
+        "test_size": 316,
+        "units": "W/(m\u00b7K)"
+      },
+      "FFV": {
+        "rmse": 0.021,
+        "mae": null,
+        "r2": null,
+        "test_size": 1610,
+        "units": "dimensionless"
+      },
+      "density": {
+        "rmse": 0.168,
+        "mae": null,
+        "r2": null,
+        "test_size": 342,
+        "units": "g/cm\u00b3"
+      },
+      "P_O2": {
+        "rmse": 0.608,
+        "mae": null,
+        "r2": null,
+        "test_size": 161,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_N2": {
+        "rmse": 0.486,
+        "mae": null,
+        "r2": null,
+        "test_size": 159,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_H2": {
+        "rmse": 0.469,
+        "mae": null,
+        "r2": null,
+        "test_size": 102,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CH4": {
+        "rmse": 0.468,
+        "mae": null,
+        "r2": null,
+        "test_size": 137,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CO2": {
+        "rmse": 0.618,
+        "mae": null,
+        "r2": null,
+        "test_size": 151,
+        "units": "log\u2081\u2080(Barrer)"
+      }
+    },
+    "paper": {
+      "title": "POINT2: A Polymer Informatics Training and Testing Database",
+      "authors": "Jiaxin Xu, Gang Liu, Ruilan Guo, Meng Jiang, Tengfei Luo",
+      "year": 2025,
+      "arxiv": "2503.23491",
+      "doi": null,
+      "url": "https://arxiv.org/abs/2503.23491"
+    },
+    "code": {
+      "repository": "https://github.com/Jiaxin-Xu/POINT2.git",
+      "framework": "PyTorch",
+      "license": null
+    },
+    "training_details": {
+      "dataset": "POINT2",
+      "train_sizes": {
+        "Tg": 5766,
+        "Tm": 2936,
+        "TC": 1264,
+        "FFV": 6436,
+        "density": 1368,
+        "P_O2": 644,
+        "P_N2": 635,
+        "P_H2": 407,
+        "P_CH4": 544,
+        "P_CO2": 603
+      },
+      "hyperparameters": "Optimized via Optuna",
+      "training_time": null,
+      "inference_time": null,
+      "hardware": null
+    },
+    "metadata": {
+      "submitted_by": "Automated extraction from POINT2 paper",
+      "submission_date": "2025-12-10",
+      "verified": true,
+      "notes": "Extracted from Table 2 of POINT2 paper"
+    }
+  },
+  {
+    "model_id": "grea",
+    "model_name": "GREA",
+    "model_family": "Graph Rationalization with Environment-based Augmentations",
+    "representation": "Graph-based representation (nodes: atoms, edges: bonds)",
+    "properties": {
+      "Tg": {
+        "rmse": 37.32,
+        "mae": null,
+        "r2": null,
+        "test_size": 1442,
+        "units": "\u00b0C"
+      },
+      "Tm": {
+        "rmse": 57.1,
+        "mae": null,
+        "r2": null,
+        "test_size": 735,
+        "units": "\u00b0C"
+      },
+      "TC": {
+        "rmse": 0.066,
+        "mae": null,
+        "r2": null,
+        "test_size": 316,
+        "units": "W/(m\u00b7K)"
+      },
+      "FFV": {
+        "rmse": 0.023,
+        "mae": null,
+        "r2": null,
+        "test_size": 1610,
+        "units": "dimensionless"
+      },
+      "density": {
+        "rmse": 0.126,
+        "mae": null,
+        "r2": null,
+        "test_size": 342,
+        "units": "g/cm\u00b3"
+      },
+      "P_O2": {
+        "rmse": 0.566,
+        "mae": null,
+        "r2": null,
+        "test_size": 161,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_N2": {
+        "rmse": 0.513,
+        "mae": null,
+        "r2": null,
+        "test_size": 159,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_H2": {
+        "rmse": 0.447,
+        "mae": null,
+        "r2": null,
+        "test_size": 102,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CH4": {
+        "rmse": 0.549,
+        "mae": null,
+        "r2": null,
+        "test_size": 137,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CO2": {
+        "rmse": 0.634,
+        "mae": null,
+        "r2": null,
+        "test_size": 151,
+        "units": "log\u2081\u2080(Barrer)"
+      }
+    },
+    "paper": {
+      "title": "POINT2: A Polymer Informatics Training and Testing Database",
+      "authors": "Jiaxin Xu, Gang Liu, Ruilan Guo, Meng Jiang, Tengfei Luo",
+      "year": 2025,
+      "arxiv": "2503.23491",
+      "doi": null,
+      "url": "https://arxiv.org/abs/2503.23491"
+    },
+    "code": {
+      "repository": "https://github.com/Jiaxin-Xu/POINT2.git",
+      "framework": "PyTorch",
+      "license": null
+    },
+    "training_details": {
+      "dataset": "POINT2",
+      "train_sizes": {
+        "Tg": 5766,
+        "Tm": 2936,
+        "TC": 1264,
+        "FFV": 6436,
+        "density": 1368,
+        "P_O2": 644,
+        "P_N2": 635,
+        "P_H2": 407,
+        "P_CH4": 544,
+        "P_CO2": 603
+      },
+      "hyperparameters": "Optimized via Optuna",
+      "training_time": null,
+      "inference_time": null,
+      "hardware": null
+    },
+    "metadata": {
+      "submitted_by": "Automated extraction from POINT2 paper",
+      "submission_date": "2025-12-10",
+      "verified": true,
+      "notes": "Extracted from Table 2 of POINT2 paper"
+    }
+  },
+  {
+    "model_id": "gpt_4o_mini_0",
+    "model_name": "GPT-4o-mini-0",
+    "model_family": "Unknown",
+    "representation": "4o-mini-0",
+    "properties": {
+      "Tg": {
+        "rmse": 100.92,
+        "mae": null,
+        "r2": null,
+        "test_size": 1442,
+        "units": "\u00b0C"
+      },
+      "Tm": {
+        "rmse": 110.47,
+        "mae": null,
+        "r2": null,
+        "test_size": 735,
+        "units": "\u00b0C"
+      },
+      "TC": {
+        "rmse": 0.112,
+        "mae": null,
+        "r2": null,
+        "test_size": 316,
+        "units": "W/(m\u00b7K)"
+      },
+      "FFV": {
+        "rmse": 0.178,
+        "mae": null,
+        "r2": null,
+        "test_size": 1610,
+        "units": "dimensionless"
+      },
+      "density": {
+        "rmse": 0.189,
+        "mae": null,
+        "r2": null,
+        "test_size": 342,
+        "units": "g/cm\u00b3"
+      },
+      "P_O2": {
+        "rmse": 2.949,
+        "mae": null,
+        "r2": null,
+        "test_size": 161,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_N2": {
+        "rmse": 3.023,
+        "mae": null,
+        "r2": null,
+        "test_size": 159,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_H2": {
+        "rmse": 4.684,
+        "mae": null,
+        "r2": null,
+        "test_size": 102,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CH4": {
+        "rmse": 3.212,
+        "mae": null,
+        "r2": null,
+        "test_size": 137,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CO2": {
+        "rmse": 2.033,
+        "mae": null,
+        "r2": null,
+        "test_size": 151,
+        "units": "log\u2081\u2080(Barrer)"
+      }
+    },
+    "paper": {
+      "title": "POINT2: A Polymer Informatics Training and Testing Database",
+      "authors": "Jiaxin Xu, Gang Liu, Ruilan Guo, Meng Jiang, Tengfei Luo",
+      "year": 2025,
+      "arxiv": "2503.23491",
+      "doi": null,
+      "url": "https://arxiv.org/abs/2503.23491"
+    },
+    "code": {
+      "repository": "https://github.com/Jiaxin-Xu/POINT2.git",
+      "framework": "Unknown",
+      "license": null
+    },
+    "training_details": {
+      "dataset": "POINT2",
+      "train_sizes": {
+        "Tg": 5766,
+        "Tm": 2936,
+        "TC": 1264,
+        "FFV": 6436,
+        "density": 1368,
+        "P_O2": 644,
+        "P_N2": 635,
+        "P_H2": 407,
+        "P_CH4": 544,
+        "P_CO2": 603
+      },
+      "hyperparameters": {},
+      "training_time": null,
+      "inference_time": null,
+      "hardware": null
+    },
+    "metadata": {
+      "submitted_by": "Automated extraction from POINT2 paper",
+      "submission_date": "2025-12-10",
+      "verified": true,
+      "notes": "Extracted from Table 2 of POINT2 paper"
+    }
+  },
+  {
+    "model_id": "gpt_4o_mini_5",
+    "model_name": "GPT-4o-mini-5",
+    "model_family": "Unknown",
+    "representation": "4o-mini-5",
+    "properties": {
+      "Tg": {
+        "rmse": 95.54,
+        "mae": null,
+        "r2": null,
+        "test_size": 1442,
+        "units": "\u00b0C"
+      },
+      "Tm": {
+        "rmse": 114.75,
+        "mae": null,
+        "r2": null,
+        "test_size": 735,
+        "units": "\u00b0C"
+      },
+      "TC": {
+        "rmse": 0.096,
+        "mae": null,
+        "r2": null,
+        "test_size": 316,
+        "units": "W/(m\u00b7K)"
+      },
+      "FFV": {
+        "rmse": 0.039,
+        "mae": null,
+        "r2": null,
+        "test_size": 1610,
+        "units": "dimensionless"
+      },
+      "density": {
+        "rmse": 0.182,
+        "mae": null,
+        "r2": null,
+        "test_size": 342,
+        "units": "g/cm\u00b3"
+      },
+      "P_O2": {
+        "rmse": 1.44,
+        "mae": null,
+        "r2": null,
+        "test_size": 161,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_N2": {
+        "rmse": 1.629,
+        "mae": null,
+        "r2": null,
+        "test_size": 159,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_H2": {
+        "rmse": 1.198,
+        "mae": null,
+        "r2": null,
+        "test_size": 102,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CH4": {
+        "rmse": 1.656,
+        "mae": null,
+        "r2": null,
+        "test_size": 137,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CO2": {
+        "rmse": 1.327,
+        "mae": null,
+        "r2": null,
+        "test_size": 151,
+        "units": "log\u2081\u2080(Barrer)"
+      }
+    },
+    "paper": {
+      "title": "POINT2: A Polymer Informatics Training and Testing Database",
+      "authors": "Jiaxin Xu, Gang Liu, Ruilan Guo, Meng Jiang, Tengfei Luo",
+      "year": 2025,
+      "arxiv": "2503.23491",
+      "doi": null,
+      "url": "https://arxiv.org/abs/2503.23491"
+    },
+    "code": {
+      "repository": "https://github.com/Jiaxin-Xu/POINT2.git",
+      "framework": "Unknown",
+      "license": null
+    },
+    "training_details": {
+      "dataset": "POINT2",
+      "train_sizes": {
+        "Tg": 5766,
+        "Tm": 2936,
+        "TC": 1264,
+        "FFV": 6436,
+        "density": 1368,
+        "P_O2": 644,
+        "P_N2": 635,
+        "P_H2": 407,
+        "P_CH4": 544,
+        "P_CO2": 603
+      },
+      "hyperparameters": {},
+      "training_time": null,
+      "inference_time": null,
+      "hardware": null
+    },
+    "metadata": {
+      "submitted_by": "Automated extraction from POINT2 paper",
+      "submission_date": "2025-12-10",
+      "verified": true,
+      "notes": "Extracted from Table 2 of POINT2 paper"
+    }
+  },
+  {
+    "model_id": "gpt_4o_mini_10",
+    "model_name": "GPT-4o-mini-10",
+    "model_family": "Unknown",
+    "representation": "4o-mini-10",
+    "properties": {
+      "Tg": {
+        "rmse": 91.11,
+        "mae": null,
+        "r2": null,
+        "test_size": 1442,
+        "units": "\u00b0C"
+      },
+      "Tm": {
+        "rmse": 111.03,
+        "mae": null,
+        "r2": null,
+        "test_size": 735,
+        "units": "\u00b0C"
+      },
+      "TC": {
+        "rmse": 0.092,
+        "mae": null,
+        "r2": null,
+        "test_size": 316,
+        "units": "W/(m\u00b7K)"
+      },
+      "FFV": {
+        "rmse": 0.035,
+        "mae": null,
+        "r2": null,
+        "test_size": 1610,
+        "units": "dimensionless"
+      },
+      "density": {
+        "rmse": 0.172,
+        "mae": null,
+        "r2": null,
+        "test_size": 342,
+        "units": "g/cm\u00b3"
+      },
+      "P_O2": {
+        "rmse": 1.32,
+        "mae": null,
+        "r2": null,
+        "test_size": 161,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_N2": {
+        "rmse": 1.52,
+        "mae": null,
+        "r2": null,
+        "test_size": 159,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_H2": {
+        "rmse": 1.17,
+        "mae": null,
+        "r2": null,
+        "test_size": 102,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CH4": {
+        "rmse": 1.533,
+        "mae": null,
+        "r2": null,
+        "test_size": 137,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CO2": {
+        "rmse": 1.29,
+        "mae": null,
+        "r2": null,
+        "test_size": 151,
+        "units": "log\u2081\u2080(Barrer)"
+      }
+    },
+    "paper": {
+      "title": "POINT2: A Polymer Informatics Training and Testing Database",
+      "authors": "Jiaxin Xu, Gang Liu, Ruilan Guo, Meng Jiang, Tengfei Luo",
+      "year": 2025,
+      "arxiv": "2503.23491",
+      "doi": null,
+      "url": "https://arxiv.org/abs/2503.23491"
+    },
+    "code": {
+      "repository": "https://github.com/Jiaxin-Xu/POINT2.git",
+      "framework": "Unknown",
+      "license": null
+    },
+    "training_details": {
+      "dataset": "POINT2",
+      "train_sizes": {
+        "Tg": 5766,
+        "Tm": 2936,
+        "TC": 1264,
+        "FFV": 6436,
+        "density": 1368,
+        "P_O2": 644,
+        "P_N2": 635,
+        "P_H2": 407,
+        "P_CH4": 544,
+        "P_CO2": 603
+      },
+      "hyperparameters": {},
+      "training_time": null,
+      "inference_time": null,
+      "hardware": null
+    },
+    "metadata": {
+      "submitted_by": "Automated extraction from POINT2 paper",
+      "submission_date": "2025-12-10",
+      "verified": true,
+      "notes": "Extracted from Table 2 of POINT2 paper"
+    }
+  },
+  {
+    "model_id": "gpt_4o_mini_20",
+    "model_name": "GPT-4o-mini-20",
+    "model_family": "Unknown",
+    "representation": "4o-mini-20",
+    "properties": {
+      "Tg": {
+        "rmse": 85.98,
+        "mae": null,
+        "r2": null,
+        "test_size": 1442,
+        "units": "\u00b0C"
+      },
+      "Tm": {
+        "rmse": 105.65,
+        "mae": null,
+        "r2": null,
+        "test_size": 735,
+        "units": "\u00b0C"
+      },
+      "TC": {
+        "rmse": 0.083,
+        "mae": null,
+        "r2": null,
+        "test_size": 316,
+        "units": "W/(m\u00b7K)"
+      },
+      "FFV": {
+        "rmse": 0.031,
+        "mae": null,
+        "r2": null,
+        "test_size": 1610,
+        "units": "dimensionless"
+      },
+      "density": {
+        "rmse": 0.169,
+        "mae": null,
+        "r2": null,
+        "test_size": 342,
+        "units": "g/cm\u00b3"
+      },
+      "P_O2": {
+        "rmse": 1.267,
+        "mae": null,
+        "r2": null,
+        "test_size": 161,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_N2": {
+        "rmse": 1.381,
+        "mae": null,
+        "r2": null,
+        "test_size": 159,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_H2": {
+        "rmse": 1.064,
+        "mae": null,
+        "r2": null,
+        "test_size": 102,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CH4": {
+        "rmse": 1.342,
+        "mae": null,
+        "r2": null,
+        "test_size": 137,
+        "units": "log\u2081\u2080(Barrer)"
+      },
+      "P_CO2": {
+        "rmse": 1.257,
+        "mae": null,
+        "r2": null,
+        "test_size": 151,
+        "units": "log\u2081\u2080(Barrer)"
+      }
+    },
+    "paper": {
+      "title": "POINT2: A Polymer Informatics Training and Testing Database",
+      "authors": "Jiaxin Xu, Gang Liu, Ruilan Guo, Meng Jiang, Tengfei Luo",
+      "year": 2025,
+      "arxiv": "2503.23491",
+      "doi": null,
+      "url": "https://arxiv.org/abs/2503.23491"
+    },
+    "code": {
+      "repository": "https://github.com/Jiaxin-Xu/POINT2.git",
+      "framework": "Unknown",
+      "license": null
+    },
+    "training_details": {
+      "dataset": "POINT2",
+      "train_sizes": {
+        "Tg": 5766,
+        "Tm": 2936,
+        "TC": 1264,
+        "FFV": 6436,
+        "density": 1368,
+        "P_O2": 644,
+        "P_N2": 635,
+        "P_H2": 407,
+        "P_CH4": 544,
+        "P_CO2": 603
+      },
+      "hyperparameters": {},
+      "training_time": null,
+      "inference_time": null,
+      "hardware": null
+    },
+    "metadata": {
+      "submitted_by": "Automated extraction from POINT2 paper",
+      "submission_date": "2025-12-10",
+      "verified": true,
+      "notes": "Extracted from Table 2 of POINT2 paper"
+    }
+  },
+  {
+    "model_id": "mpnn_tgss",
+    "model_name": "MPNN (Ours)",
+    "model_family": "Graph Neural Network",
+    "representation": "Molecular Graph",
+    "properties": {
+      "Tg": {
+        "rmse": 39.97138045482154,
+        "mae": 27.854392745696146,
+        "r2": 0.8746618514047189
+      }
+    },
+    "paper_url": null,
+    "code_url": "https://github.com/your-username/polymerite",
+    "notes": "Message Passing Neural Network trained on TgSS dataset (7,284 polymers). Uses atom and bond features with 3 message passing layers.",
+    "date_added": "2025-12-10T20:22:43.324275"
+  },
+  {
+    "model_id": "mlp_morgan_tgss",
+    "model_name": "SimpleMLP (Ours)",
+    "model_family": "Neural Network",
+    "representation": "Morgan Fingerprints (2048-bit)",
+    "properties": {
+      "Tg": {
+        "rmse": 37.34563622657376,
+        "mae": 24.86538256224463,
+        "r2": 0.8905880632525416
+      }
+    },
+    "paper_url": null,
+    "code_url": "https://github.com/your-username/polymerite",
+    "notes": "3-layer MLP with 512 hidden units. Trained on Morgan fingerprints (radius=2, 2048 bits) from TgSS dataset. Converged in 24 epochs with early stopping.",
+    "date_added": "2025-12-10T20:22:43.325877"
+  }
+]

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <defs>
+    <!-- Gold gradient for highlights -->
+    <radialGradient id="goldGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
+    </radialGradient>
+
+    <!-- Blue gradient for background -->
+    <radialGradient id="blueGradient" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e40af;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+
+  <!-- Outer blue circle -->
+  <circle cx="24" cy="24" r="22" fill="url(#blueGradient)" stroke="url(#goldGradient)" stroke-width="2"/>
+
+  <!-- Maltese cross (flared ends) -->
+  <g id="cross" fill="url(#goldGradient)">
+    <!-- Vertical arm -->
+    <path d="M 24 8 L 28 12 L 26 24 L 28 36 L 24 40 L 20 36 L 22 24 L 20 12 Z"/>
+    <!-- Horizontal arm -->
+    <path d="M 8 24 L 12 20 L 24 22 L 36 20 L 40 24 L 36 28 L 24 26 L 12 28 Z"/>
+  </g>
+
+  <!-- Inner circle decoration -->
+  <circle cx="24" cy="24" r="6" fill="none" stroke="url(#goldGradient)" stroke-width="1"/>
+</svg>
