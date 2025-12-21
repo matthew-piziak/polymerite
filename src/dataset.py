@@ -12,7 +12,7 @@ from typing import Optional, List, Tuple
 from torch.utils.data import Dataset
 from torch_geometric.data import Data, Batch
 
-from featurization import PolymerFeaturizer, MorganFingerprintFeaturizer
+from .featurization import PolymerFeaturizer, MorganFingerprintFeaturizer
 
 
 class PolymerDataset(Dataset):
@@ -231,6 +231,105 @@ class PolymerFingerprintDataset(Dataset):
         if self.normalize:
             return normalized_value * self.std + self.mean
         return normalized_value
+
+
+class PolymerDescriptorDataset(Dataset):
+    """
+    Dataset for polymer property prediction using pre-computed molecular descriptors.
+
+    This is useful when SMILES are not available but molecular descriptors
+    have been pre-computed (e.g., from quantum chemistry calculations or
+    other featurization methods).
+    """
+
+    def __init__(
+        self,
+        csv_path: str,
+        property_name: str,
+        descriptor_columns: List[str],
+        property_column: str = "property_value",
+        normalize: bool = True,
+    ):
+        """
+        Initialize descriptor dataset.
+
+        Args:
+            csv_path: Path to CSV file with descriptors and property values
+            property_name: Name of the property (for metadata)
+            descriptor_columns: List of column names containing descriptors
+            property_column: Name of column containing property values
+            normalize: Whether to normalize property values
+        """
+        self.csv_path = Path(csv_path)
+        self.property_name = property_name
+        self.descriptor_columns = descriptor_columns
+        self.property_column = property_column
+
+        # Load data
+        self.df = pd.read_csv(csv_path)
+
+        # Check columns exist
+        missing_cols = set(descriptor_columns + [property_column]) - set(self.df.columns)
+        if missing_cols:
+            raise ValueError(f"Columns not found in {csv_path}: {missing_cols}")
+
+        # Remove rows with missing values
+        cols_to_check = descriptor_columns + [property_column]
+        self.df = self.df.dropna(subset=cols_to_check)
+
+        # Normalization
+        self.mean = self.df[property_column].mean()
+        self.std = self.df[property_column].std()
+        self.normalize = normalize
+
+        # Prepare descriptors
+        self._prepare_descriptors()
+
+        print(f"Loaded {len(self)} samples from {self.csv_path.name}")
+        print(f"Descriptor dimension: {len(descriptor_columns)}")
+        if normalize:
+            print(f"Property stats: mean={self.mean:.4f}, std={self.std:.4f}")
+
+    def _prepare_descriptors(self):
+        """Extract and prepare descriptor arrays."""
+        # Extract descriptor features
+        self.descriptors = self.df[self.descriptor_columns].values.astype(np.float32)
+
+        # Extract and normalize property values
+        prop_values = self.df[self.property_column].values
+
+        if self.normalize:
+            self.properties = ((prop_values - self.mean) / self.std).astype(np.float32)
+        else:
+            self.properties = prop_values.astype(np.float32)
+
+    def __len__(self) -> int:
+        """Return number of samples."""
+        return len(self.descriptors)
+
+    def __getitem__(self, idx: int) -> Tuple[torch.Tensor, torch.Tensor]:
+        """Get a single descriptor vector and property value."""
+        x = torch.from_numpy(self.descriptors[idx])
+        y = torch.tensor([self.properties[idx]], dtype=torch.float)
+        return x, y
+
+    def denormalize(self, normalized_value: float) -> float:
+        """Convert normalized value back to original scale."""
+        if self.normalize:
+            return normalized_value * self.std + self.mean
+        return normalized_value
+
+    def get_statistics(self) -> dict:
+        """Get dataset statistics."""
+        return {
+            'property': self.property_name,
+            'n_samples': len(self),
+            'n_descriptors': len(self.descriptor_columns),
+            'mean': self.mean,
+            'std': self.std,
+            'min': float(self.df[self.property_column].min()),
+            'max': float(self.df[self.property_column].max()),
+        }
 
 
 def collate_polymer_graphs(batch: List[Data]) -> Batch:

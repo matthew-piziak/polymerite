@@ -15,13 +15,14 @@ import json
 import argparse
 from typing import Dict, Tuple
 
-from featurization import PolymerFeaturizer, MorganFingerprintFeaturizer
-from dataset import (
+from .featurization import PolymerFeaturizer, MorganFingerprintFeaturizer
+from .dataset import (
     PolymerDataset,
     PolymerFingerprintDataset,
+    PolymerDescriptorDataset,
     collate_polymer_graphs,
 )
-from models import MPNN, SimpleMLP
+from .models import MPNN, SimpleMLP
 
 
 def compute_metrics(predictions: np.ndarray, targets: np.ndarray) -> Dict[str, float]:
@@ -578,6 +579,177 @@ def train_mlp(
     }
 
     results_path = output_dir / f"mlp_{property_name}_results.json"
+    with open(results_path, 'w') as f:
+        json.dump(results, f, indent=2)
+
+    print(f"Results saved to: {results_path}")
+    print()
+
+    return model, test_metrics
+
+
+def train_mlp_descriptors(
+    property_name: str,
+    train_csv: str,
+    test_csv: str,
+    descriptor_columns: list,
+    output_dir: str = "models/checkpoints",
+    hidden_dim: int = 512,
+    num_layers: int = 3,
+    batch_size: int = 64,
+    learning_rate: float = 1e-3,
+    num_epochs: int = 100,
+    patience: int = 10,
+    device: str = None,
+):
+    """
+    Train SimpleMLP model using pre-computed molecular descriptors.
+
+    This function is specifically for datasets that provide molecular descriptors
+    instead of SMILES strings (e.g., PUE643 polyurethane elastomer dataset).
+
+    Args:
+        property_name: Name of property to predict
+        train_csv: Path to training CSV file
+        test_csv: Path to test CSV file
+        descriptor_columns: List of column names containing descriptor features
+        output_dir: Directory to save model checkpoints
+        hidden_dim: Hidden dimension for MLP
+        num_layers: Number of hidden layers
+        batch_size: Batch size for training
+        learning_rate: Learning rate
+        num_epochs: Maximum number of epochs
+        patience: Early stopping patience
+        device: Device to train on (default: auto-detect)
+    """
+    print("=" * 70)
+    print(f"Training SimpleMLP (Descriptors) for {property_name}")
+    print("=" * 70)
+    print()
+
+    # Auto-detect device
+    if device is None:
+        device = 'cuda' if torch.cuda.is_available() else 'cpu'
+
+    # Create output directory
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    # Load datasets
+    print("Loading datasets...")
+
+    train_dataset = PolymerDescriptorDataset(
+        csv_path=train_csv,
+        property_name=property_name,
+        descriptor_columns=descriptor_columns,
+        normalize=True,
+    )
+
+    test_dataset = PolymerDescriptorDataset(
+        csv_path=test_csv,
+        property_name=property_name,
+        descriptor_columns=descriptor_columns,
+        normalize=True,
+    )
+
+    # Use training set statistics for normalization
+    test_dataset.mean = train_dataset.mean
+    test_dataset.std = train_dataset.std
+
+    # Create data loaders
+    train_loader = DataLoader(
+        train_dataset,
+        batch_size=batch_size,
+        shuffle=True,
+    )
+
+    test_loader = DataLoader(
+        test_dataset,
+        batch_size=batch_size,
+        shuffle=False,
+    )
+
+    print(f"Train dataset: {len(train_dataset)} samples")
+    print(f"Test dataset:  {len(test_dataset)} samples")
+    print(f"Descriptor dimension: {len(descriptor_columns)}")
+    print()
+
+    # Create model
+    input_dim = len(descriptor_columns)
+    model = SimpleMLP(
+        input_dim=input_dim,
+        hidden_dim=hidden_dim,
+        num_layers=num_layers,
+        dropout=0.2,
+    )
+
+    # Train
+    trainer = Trainer(
+        model=model,
+        device=device,
+        learning_rate=learning_rate,
+    )
+
+    history = trainer.fit(
+        train_loader=train_loader,
+        val_loader=test_loader,
+        num_epochs=num_epochs,
+        patience=patience,
+        is_graph_model=False,
+        denormalize_fn=train_dataset.denormalize,
+        verbose=True,
+    )
+
+    # Final evaluation on test set
+    print("\n" + "=" * 70)
+    print("Final Evaluation on Test Set")
+    print("=" * 70)
+
+    test_loss, test_metrics = trainer.evaluate(
+        test_loader,
+        is_graph_model=False,
+        denormalize_fn=train_dataset.denormalize,
+    )
+
+    print(f"Test RMSE: {test_metrics['rmse']:.4f}")
+    print(f"Test MAE:  {test_metrics['mae']:.4f}")
+    print(f"Test R²:   {test_metrics['r2']:.4f}")
+
+    # Save model
+    model_path = output_dir / f"mlp_descriptors_{property_name}.pt"
+    torch.save({
+        'model_state_dict': model.state_dict(),
+        'model_config': {
+            'input_dim': input_dim,
+            'hidden_dim': hidden_dim,
+            'num_layers': num_layers,
+        },
+        'descriptor_columns': descriptor_columns,
+        'dataset_stats': {
+            'mean': train_dataset.mean,
+            'std': train_dataset.std,
+        },
+        'test_metrics': test_metrics,
+    }, model_path)
+
+    print(f"\nModel saved to: {model_path}")
+
+    # Save metrics
+    results = {
+        'property': property_name,
+        'model': 'SimpleMLP',
+        'representation': f'Molecular Descriptors ({len(descriptor_columns)}D)',
+        'test_metrics': test_metrics,
+        'history': history,
+        'config': {
+            'hidden_dim': hidden_dim,
+            'num_layers': num_layers,
+            'batch_size': batch_size,
+            'learning_rate': learning_rate,
+        }
+    }
+
+    results_path = output_dir / f"mlp_descriptors_{property_name}_results.json"
     with open(results_path, 'w') as f:
         json.dump(results, f, indent=2)
 
