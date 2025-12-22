@@ -1898,5 +1898,57 @@
     "code_url": "https://github.com/your-username/polymerite",
     "notes": "3-layer MLP with 512 hidden units. Trained on Morgan fingerprints (radius=2, 2048 bits) from TgSS dataset. Converged in 24 epochs with early stopping.",
     "date_added": "2025-12-10T20:22:43.325877"
+  },
+  {
+    "model_id": "mlp_descriptors_pue643",
+    "model_name": "SimpleMLP-Descriptors (Ours)",
+    "model_family": "Neural Network",
+    "representation": "Molecular Descriptors (20D)",
+    "properties": {
+      "YoungModulus": {
+        "rmse": 91.70268468032471,
+        "mae": 47.3767673389482,
+        "r2": 0.4293095741176923,
+        "units": "MPa",
+        "test_size": 129
+      },
+      "TensileStrength": {
+        "rmse": 10.85195494397827,
+        "mae": 8.409505612245006,
+        "r2": 0.5066903787528205,
+        "units": "MPa",
+        "test_size": 129
+      },
+      "ElongationAtBreak": {
+        "rmse": 2.0354914485733535,
+        "mae": 1.3046427885960308,
+        "r2": 0.686119204374673,
+        "units": "%",
+        "test_size": 129
+      }
+    },
+    "paper_url": null,
+    "code_url": "https://github.com/matthew-piziak/polymerite",
+    "notes": "Trained on PUE643 dataset (643 samples total, 514 train / 129 test). Descriptor-only representation - no SMILES available.",
+    "date_added": "2025-12-21T09:53:13.944164"
+  },
+  {
+    "model_id": "chemberta_tg",
+    "model_name": "ChemBERTa + Augmentation (Ours)",
+    "model_family": "Transformer (Pretrained)",
+    "representation": "Raw SMILES strings (tokenized)",
+    "properties": {
+      "Tg": {
+        "rmse": 40.39767700490688,
+        "mae": 28.612180082763437,
+        "r2": 0.871974121188772,
+        "units": "°C",
+        "test_size": 1456
+      }
+    },
+    "paper_url": null,
+    "code_url": "https://github.com/matthew-piziak/polymerite",
+    "notes": "ChemBERTa-77M-MLM pretrained transformer with 5x SMILES augmentation. Two-stage training: Stage 1 (20 epochs, backbone frozen, RMSE: 49.26°C) → Stage 2 (10 epochs, full fine-tuning, RMSE: 40.40°C). Trained on 34,424 augmented samples (5,828 original). Training time: ~13.5 hours on CPU. Did not outperform SimpleMLP, likely due to CPU training and dataset size.",
+    "date_added": "2025-12-22T12:10:00.000000"
   }
 ]

@@ -1,0 +1,19 @@
+{
+  "property": "ElongationAtBreak",
+  "num_models": 1,
+  "last_updated": "2025-12-21T09:53:13.945635",
+  "leaderboard": [
+    {
+      "model_id": "mlp_descriptors_pue643",
+      "model_name": "SimpleMLP-Descriptors (Ours)",
+      "model_family": "Neural Network",
+      "representation": "Molecular Descriptors (20D)",
+      "rmse": 2.0354914485733535,
+      "mae": 1.3046427885960308,
+      "r2": 0.686119204374673,
+      "paper_url": null,
+      "code_url": "https://github.com/matthew-piziak/polymerite",
+      "rank": 1
+    }
+  ]
+}
