@@ -1,7 +1,7 @@
 {
   "property": "Tg",
-  "num_models": 18,
-  "last_updated": "2025-12-10T20:22:43.332108",
+  "num_models": 19,
+  "last_updated": "2025-12-22T12:30:00.000000",
   "leaderboard": [
     {
       "model_id": "gnn",
@@ -160,6 +160,18 @@
       "rank": 13
     },
     {
+      "model_id": "chemberta_tg",
+      "model_name": "ChemBERTa + Augmentation (Ours)",
+      "model_family": "Transformer (Pretrained)",
+      "representation": "Raw SMILES strings (tokenized)",
+      "rmse": 40.39767700490688,
+      "mae": 28.612180082763437,
+      "r2": 0.871974121188772,
+      "paper_url": null,
+      "code_url": "https://github.com/matthew-piziak/polymerite",
+      "rank": 14
+    },
+    {
       "model_id": "qrf_maccs",
       "model_name": "QRF-MACCS",
       "model_family": "Quantile Random Forest",
@@ -169,7 +181,7 @@
       "r2": null,
       "paper_url": null,
       "code_url": null,
-      "rank": 14
+      "rank": 15
     },
     {
       "model_id": "gpt_4o_mini_20",
@@ -181,7 +193,7 @@
       "r2": null,
       "paper_url": null,
       "code_url": null,
-      "rank": 15
+      "rank": 16
     },
     {
       "model_id": "gpt_4o_mini_10",
@@ -193,7 +205,7 @@
       "r2": null,
       "paper_url": null,
       "code_url": null,
-      "rank": 16
+      "rank": 17
     },
     {
       "model_id": "gpt_4o_mini_5",
@@ -205,7 +217,7 @@
       "r2": null,
       "paper_url": null,
       "code_url": null,
-      "rank": 17
+      "rank": 18
     },
     {
       "model_id": "gpt_4o_mini_0",
@@ -217,7 +229,7 @@
       "r2": null,
       "paper_url": null,
       "code_url": null,
-      "rank": 18
+      "rank": 19
     }
   ]
 }

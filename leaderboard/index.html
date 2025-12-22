@@ -9,7 +9,7 @@
     <meta name="googlebot" content="noindex, nofollow">
     <meta name="googlebot-news" content="noindex, nofollow">
 
-    <title>Polymerite - Polymer Property Prediction Leaderboard</title>
+    <title>Polymerite - Polymer Property Prediction Benchmark</title>
     <style>
         :root {
             --primary-color: #1e40af;
@@ -35,12 +35,16 @@
             background: var(--bg-color);
             color: var(--text-primary);
             line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            flex: 1;
         }
 
         header {
@@ -56,6 +60,10 @@
             font-size: 3em;
             margin-bottom: 10px;
             font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
         }
 
         header p {
@@ -98,179 +106,155 @@
             font-size: 0.95em;
         }
 
-        .leaderboard-section {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 40px;
-        }
-
         .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 30px;
         }
 
         .section-header h2 {
             font-size: 2em;
             color: var(--text-primary);
+            margin-bottom: 10px;
         }
 
-        .property-badge {
-            background: var(--primary-color);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            font-weight: 600;
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.05em;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
         }
 
-        thead {
-            background: var(--bg-color);
+        .property-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+            border-left: 4px solid var(--primary-color);
+            position: relative;
         }
 
-        th {
-            padding: 15px;
-            text-align: left;
-            font-weight: 600;
+        .property-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .property-card[data-status="limited"] {
+            border-left: 4px solid var(--warning-color);
+        }
+
+        .property-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .property-header h3 {
+            font-size: 1.5em;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+
+        .property-description {
             color: var(--text-secondary);
             font-size: 0.9em;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .badge {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        td {
-            padding: 18px 15px;
-            border-bottom: 1px solid var(--border-color);
+        .badge-success {
+            background: #d1fae5;
+            color: #065f46;
         }
 
-        tr:hover {
-            background: var(--bg-color);
+        .badge-warning {
+            background: #fef3c7;
+            color: #92400e;
         }
 
-        .rank-badge {
-            display: inline-block;
-            width: 32px;
-            height: 32px;
-            line-height: 32px;
+        .property-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .property-stat {
             text-align: center;
-            border-radius: 50%;
-            font-weight: bold;
-            font-size: 0.9em;
+            padding: 12px;
+            background: var(--bg-color);
+            border-radius: 8px;
         }
 
-        .rank-1 {
-            background: linear-gradient(135deg, #ffd700, #ffed4e);
-            color: #854d0e;
-        }
-
-        .rank-2 {
-            background: linear-gradient(135deg, #c0c0c0, #e8e8e8);
-            color: #57534e;
-        }
-
-        .rank-3 {
-            background: linear-gradient(135deg, #cd7f32, #e6a864);
-            color: #78350f;
-        }
-
-        .rank-other {
-            background: var(--border-color);
+        .property-stat-label {
             color: var(--text-secondary);
+            font-size: 0.8em;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .model-name {
-            font-weight: 600;
+        .property-stat-value {
             color: var(--text-primary);
-        }
-
-        .model-family {
-            color: var(--text-secondary);
-            font-size: 0.9em;
-            margin-top: 2px;
-        }
-
-        .metric-value {
-            font-family: 'Courier New', monospace;
+            font-size: 1.3em;
             font-weight: 600;
-            font-size: 1.1em;
         }
 
-        .metric-best {
-            color: var(--success-color);
+        .property-note {
+            background: #fef3c7;
+            border-left: 3px solid var(--warning-color);
+            padding: 10px 12px;
+            margin-bottom: 20px;
+            border-radius: 4px;
         }
 
-        .badge {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 12px;
+        .property-note small {
+            color: #92400e;
             font-size: 0.85em;
-            font-weight: 600;
-            margin-left: 8px;
+            line-height: 1.4;
         }
 
-        .badge-new {
-            background: var(--success-color);
-            color: white;
-        }
-
-        .badge-ours {
-            background: var(--warning-color);
-            color: white;
-        }
-
-        .links {
-            display: flex;
-            gap: 10px;
-        }
-
-        .link-btn {
-            padding: 6px 12px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 0.85em;
-            font-weight: 500;
-            transition: opacity 0.2s;
-        }
-
-        .link-btn:hover {
-            opacity: 0.8;
-        }
-
-        .link-paper {
+        .btn-view {
+            display: block;
+            text-align: center;
             background: var(--primary-color);
             color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
         }
 
-        .link-code {
-            background: var(--text-primary);
-            color: white;
-        }
-
-        .link-disabled {
-            background: var(--border-color);
-            color: var(--text-secondary);
-            cursor: not-allowed;
+        .btn-view:hover {
+            background: #1e3a8a;
+            transform: translateY(-1px);
         }
 
         footer {
+            background: var(--text-primary);
+            color: white;
             text-align: center;
-            padding: 40px 20px;
-            color: var(--text-secondary);
-            font-size: 0.9em;
+            padding: 30px 20px;
+            margin-top: 60px;
         }
 
         footer a {
-            color: var(--primary-color);
+            color: var(--accent-gold);
             text-decoration: none;
         }
 
@@ -278,179 +262,226 @@
             text-decoration: underline;
         }
 
-        .highlight-row {
-            background: #fef3c7 !important;
-        }
-
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2em;
+                flex-direction: column;
+                gap: 10px;
             }
 
-            .stats-grid {
+            .properties-grid {
                 grid-template-columns: 1fr;
             }
 
-            table {
-                font-size: 0.9em;
-            }
-
-            th, td {
-                padding: 10px;
-            }
-
-            .links {
-                flex-direction: column;
+            .stat-card .stat-value {
+                font-size: 2em;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 10px;">
-            <img src="assets/medal.svg" style="width: 64px; height: 64px; margin: 0px 0px 8px 0px;">
-            <h1>Polymérite</h1>
-        </div>
-        <p>Model Leaderboard for Polymer Property Prediction</p>
+        <h1>
+            <img src="assets/medal.svg" style="width: 64px; height: 64px;">
+            <span>Polymérite</span>
+        </h1>
+        <p>Benchmark for Polymer Property Prediction with Machine Learning</p>
     </header>
 
     <div class="container">
         <!-- Statistics -->
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-value" id="total-models">18</div>
-                <div class="stat-label">Total Models</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">1</div>
+                <div class="stat-value" id="total-properties">4</div>
                 <div class="stat-label">Properties</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">36.01°C</div>
-                <div class="stat-label">Best RMSE</div>
+                <div class="stat-value" id="total-models">19</div>
+                <div class="stat-label">Total Models</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="last-updated">2025-12-21</div>
+                <div class="stat-label">Last Updated</div>
             </div>
         </div>
 
-        <!-- Leaderboard -->
-        <div class="leaderboard-section">
-            <div class="section-header">
-                <h2>Glass Transition Temperature (Tg)</h2>
-                <span class="property-badge">°C</span>
+        <!-- Section Header -->
+        <div class="section-header">
+            <h2>Properties</h2>
+            <p>Select a property to view model rankings and performance metrics</p>
+        </div>
+
+        <!-- Properties Grid -->
+        <div class="properties-grid">
+            <!-- Tg Property -->
+            <div class="property-card" data-status="large">
+                <div class="property-header">
+                    <h3>Glass Transition Temperature</h3>
+                    <span class="badge badge-success">Large Dataset</span>
+                </div>
+                <div class="property-description">
+                    Temperature at which polymers transition from glassy to rubbery state
+                </div>
+                <div class="property-stats">
+                    <div class="property-stat">
+                        <div class="property-stat-label">Models</div>
+                        <div class="property-stat-value">18</div>
+                    </div>
+                    <div class="property-stat">
+                        <div class="property-stat-label">Best RMSE</div>
+                        <div class="property-stat-value">36.01°C</div>
+                    </div>
+                    <div class="property-stat">
+                        <div class="property-stat-label">Dataset</div>
+                        <div class="property-stat-value">7,208</div>
+                    </div>
+                    <div class="property-stat">
+                        <div class="property-stat-label">Data Type</div>
+                        <div class="property-stat-value">SMILES</div>
+                    </div>
+                </div>
+                <a href="tg.html" class="btn-view">View Leaderboard →</a>
             </div>
 
-            <table id="leaderboard-table">
-                <thead>
-                    <tr>
-                        <th style="width: 50px;">Rank</th>
-                        <th>Model</th>
-                        <th style="width: 120px;">RMSE (°C)</th>
-                        <th style="width: 120px;">MAE (°C)</th>
-                        <th style="width: 100px;">R²</th>
-                        <th style="width: 150px;">Links</th>
-                    </tr>
-                </thead>
-                <tbody id="leaderboard-body">
-                    <!-- Will be populated by JavaScript -->
-                </tbody>
-            </table>
+            <!-- Young's Modulus -->
+            <div class="property-card" data-status="limited">
+                <div class="property-header">
+                    <h3>Young's Modulus</h3>
+                    <span class="badge badge-warning">Limited Data</span>
+                </div>
+                <div class="property-description">
+                    Stiffness / elastic modulus of polymer materials
+                </div>
+                <div class="property-note">
+                    <small>⚠️ Descriptor-only, 643 samples (514 train / 129 test)</small>
+                </div>
+                <div class="property-stats">
+                    <div class="property-stat">
+                        <div class="property-stat-label">Models</div>
+                        <div class="property-stat-value">1</div>
+                    </div>
+                    <div class="property-stat">
+                        <div class="property-stat-label">Best RMSE</div>
+                        <div class="property-stat-value">91.70 MPa</div>
+                    </div>
+                    <div class="property-stat">
+                        <div class="property-stat-label">Dataset</div>
+                        <div class="property-stat-value">643</div>
+                    </div>
+                    <div class="property-stat">
+                        <div class="property-stat-label">Data Type</div>
+                        <div class="property-stat-value">Descriptors</div>
+                    </div>
+                </div>
+                <a href="youngmodulus.html" class="btn-view">View Leaderboard →</a>
+            </div>
+
+            <!-- Tensile Strength -->
+            <div class="property-card" data-status="limited">
+                <div class="property-header">
+                    <h3>Tensile Strength</h3>
+                    <span class="badge badge-warning">Limited Data</span>
+                </div>
+                <div class="property-description">
+                    Maximum stress a material can withstand before failure
+                </div>
+                <div class="property-note">
+                    <small>⚠️ Descriptor-only, 643 samples (514 train / 129 test)</small>
+                </div>
+                <div class="property-stats">
+                    <div class="property-stat">
+                        <div class="property-stat-label">Models</div>
+                        <div class="property-stat-value">1</div>
+                    </div>
+                    <div class="property-stat">
+                        <div class="property-stat-label">Best RMSE</div>
+                        <div class="property-stat-value">10.85 MPa</div>
+                    </div>
+                    <div class="property-stat">
+                        <div class="property-stat-label">Dataset</div>
+                        <div class="property-stat-value">643</div>
+                    </div>
+                    <div class="property-stat">
+                        <div class="property-stat-label">Data Type</div>
+                        <div class="property-stat-value">Descriptors</div>
+                    </div>
+                </div>
+                <a href="tensilestrength.html" class="btn-view">View Leaderboard →</a>
+            </div>
+
+            <!-- Elongation at Break -->
+            <div class="property-card" data-status="limited">
+                <div class="property-header">
+                    <h3>Elongation at Break</h3>
+                    <span class="badge badge-warning">Limited Data</span>
+                </div>
+                <div class="property-description">
+                    Maximum strain (stretch) before material rupture
+                </div>
+                <div class="property-note">
+                    <small>⚠️ Descriptor-only, 643 samples (514 train / 129 test)</small>
+                </div>
+                <div class="property-stats">
+                    <div class="property-stat">
+                        <div class="property-stat-label">Models</div>
+                        <div class="property-stat-value">1</div>
+                    </div>
+                    <div class="property-stat">
+                        <div class="property-stat-label">Best RMSE</div>
+                        <div class="property-stat-value">2.04%</div>
+                    </div>
+                    <div class="property-stat">
+                        <div class="property-stat-label">Dataset</div>
+                        <div class="property-stat-value">643</div>
+                    </div>
+                    <div class="property-stat">
+                        <div class="property-stat-label">Data Type</div>
+                        <div class="property-stat-value">Descriptors</div>
+                    </div>
+                </div>
+                <a href="elongationatbreak.html" class="btn-view">View Leaderboard →</a>
+            </div>
         </div>
 
         <!-- About Section -->
-        <div class="leaderboard-section">
-            <h2 style="margin-bottom: 20px;">About</h2>
+        <div style="background: var(--card-bg); border-radius: 12px; padding: 30px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <h2 style="margin-bottom: 20px;">About Polymerite</h2>
             <p style="color: var(--text-secondary); margin-bottom: 15px;">
-                This leaderboard tracks the state-of-the-art in machine learning models for predicting polymer properties.
+                Polymerite is a benchmark for machine learning models that predict polymer properties.
                 Models are evaluated on standardized datasets and ranked by RMSE (Root Mean Squared Error) - lower is better.
             </p>
             <p style="color: var(--text-secondary); margin-bottom: 15px;">
-                <strong>Dataset:</strong> Models marked "VERIFIED" are trained on the TgSS dataset (7,284 polymers with glass transition temperatures).
-                Models marked with <sup>†</sup> are from the POINT2 benchmark paper<sup id="point2-ref"><a href="papers/point2.pdf" target="_blank" style="color: var(--primary-color);">[1]</a></sup>.
+                <strong>Heterogeneous Benchmark:</strong> Different properties have different data availability.
+                This reflects the real landscape of polymer informatics and demonstrates the practical limitations
+                researchers face when working with polymer data.
             </p>
-            <p style="color: var(--text-secondary); margin-bottom: 15px;">
-                <strong>References:</strong><br>
-                <span style="font-size: 0.9em;">
-                    [1] Jiaxin Xu, Gang Liu, Ruilan Guo, Meng Jiang, Tengfei Luo.
-                    "POINT2: A Polymer Informatics Training and Testing Database."
-                    <em>arXiv:2503.23491</em>, 2025.
-                    <a href="papers/point2.pdf" target="_blank" style="color: var(--primary-color); text-decoration: none;">[PDF]</a>
-                </span>
+            <p style="color: var(--text-secondary);">
+                <strong>Why Data Type Matters:</strong> SMILES representations enable graph neural networks (GNN, MPNN),
+                while descriptor-only datasets limit models to traditional ML approaches (MLP, Random Forest).
+                The mechanical properties currently lack SMILES data, presenting an opportunity for future data enrichment.
             </p>
         </div>
     </div>
 
     <footer>
         <p>
-            Built with ❤️ for the polymer informatics community |
-            <a href="https://github.com/matthew-piziak/polymerite">GitHub</a> |
-            <a href="https://arxiv.org/abs/2503.23491">POINT2 Paper</a>
+            Built for the polymer informatics community |
+            <a href="https://github.com/matthew-piziak/polymerite">GitHub</a>
         </p>
-        <p style="margin-top: 10px; font-size: 0.85em;">
-            Last updated: <span id="last-updated">2025-12-10</span>
+        <p style="margin-top: 10px; font-size: 0.85em; opacity: 0.8;">
+            Last updated: <span id="footer-updated">2025-12-21</span>
         </p>
     </footer>
 
     <script>
-        // Load leaderboard data
-        fetch('data/leaderboard/results_Tg.json')
-            .then(response => response.json())
-            .then(data => {
-                const tbody = document.getElementById('leaderboard-body');
-                const leaderboard = data.leaderboard;
-
-                leaderboard.forEach((model, index) => {
-                    const tr = document.createElement('tr');
-
-                    // Highlight our models
-                    if (model.model_name.includes('(Ours)')) {
-                        tr.classList.add('highlight-row');
-                    }
-
-                    // Build model name with badges and footnotes
-                    let modelNameHtml = model.model_name;
-
-                    // Add VERIFIED badge for our models
-                    if (model.model_name.includes('(Ours)')) {
-                        modelNameHtml += '<span class="badge badge-ours">VERIFIED</span>';
-                    }
-
-                    // Add footnote for POINT2 models
-                    const point2ModelIds = ['gnn', 'grea', 'qrf_morgan', 'qrf_maccs', 'qrf_rdkit',
-                                            'qrf_tt', 'qrf_ap', 'mlp_d_morgan', 'mlp_d_maccs',
-                                            'mlp_d_rdkit', 'mlp_d_tt', 'mlp_d_ap',
-                                            'gpt_4o_mini_0', 'gpt_4o_mini_5', 'gpt_4o_mini_10', 'gpt_4o_mini_20'];
-                    if (point2ModelIds.includes(model.model_id)) {
-                        modelNameHtml += '<sup><a href="#point2-ref" style="color: var(--primary-color); text-decoration: none;">†</a></sup>';
-                    }
-
-                    // Rank
-                    const rankClass = index === 0 ? 'rank-1' : index === 1 ? 'rank-2' : index === 2 ? 'rank-3' : 'rank-other';
-                    tr.innerHTML = `
-                        <td><span class="rank-badge ${rankClass}">${model.rank}</span></td>
-                        <td>
-                            <div class="model-name">${modelNameHtml}</div>
-                            <div class="model-family">${model.model_family}</div>
-                        </td>
-                        <td><span class="metric-value ${index === 0 ? 'metric-best' : ''}">${model.rmse.toFixed(2)}</span></td>
-                        <td><span class="metric-value">${model.mae ? model.mae.toFixed(2) : '—'}</span></td>
-                        <td><span class="metric-value">${model.r2 ? model.r2.toFixed(4) : '—'}</span></td>
-                        <td>
-                            <div class="links">
-                                ${model.paper_url ? `<a href="${model.paper_url}" class="link-btn link-paper" target="_blank">Paper</a>` : ''}
-                                ${model.code_url ? `<a href="${model.code_url}" class="link-btn link-code" target="_blank">Code</a>` : ''}
-                            </div>
-                        </td>
-                    `;
-                    tbody.appendChild(tr);
-                });
-
-                // Update stats
-                document.getElementById('total-models').textContent = leaderboard.length;
-                document.getElementById('last-updated').textContent = new Date(data.last_updated).toLocaleDateString();
-            })
-            .catch(error => {
-                console.error('Error loading leaderboard:', error);
-                document.getElementById('leaderboard-body').innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 40px;">Failed to load leaderboard data. Please refresh the page.</td></tr>';
-            });
+        // Update last updated date
+        const now = new Date();
+        document.getElementById('last-updated').textContent = now.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+        });
+        document.getElementById('footer-updated').textContent = now.toLocaleDateString();
     </script>
 </body>
 </html>
